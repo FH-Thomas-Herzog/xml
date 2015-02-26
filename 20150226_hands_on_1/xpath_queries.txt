@@ -1,0 +1,17 @@
+a) //TeilnehmerListe/Person
+b) /*
+c) /node()                                         // When root node artifical node, else //node()
+d) /*/*
+e) //Vorname
+f) //Telefon/@type
+g) //@*
+h) //TeilnehmerListe/Person[2]
+i)  //TeilnehmerListe/Person[last()]
+j) //Person[2]/Telefon[2]
+k) //Person[Vorname = "Han"]
+l) //Person/Telefon[@type = "home"]
+m) //Person[Telefon/@type = "home"][2]
+n) //Person[2][Telefon/@type = "home"]
+o) //Person[Vorname | Telefon] 
+
+

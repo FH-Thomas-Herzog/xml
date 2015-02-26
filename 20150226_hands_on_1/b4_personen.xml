@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Termin>
+	<TerminInfos/>
+	<TeilnehmerListe>
+		<Person id="p1">
+			<Vorname>Obi-Wan</Vorname>
+			<Nachname>Kenobi</Nachname>
+			<Telefon type="private">987-654-323</Telefon>
+		</Person>
+		<Person id="p2">
+			<Vorname>Han</Vorname>
+			<Nachname>Solo</Nachname>
+			<Telefon type="home">333-444-555</Telefon>
+			<Telefon type="private">777-888-999</Telefon>
+		</Person>
+		<Person id="p3">
+			<Vorname>R2</Vorname>
+			<Nachname>D2</Nachname>
+			<Telefon type="home">321-342-654</Telefon>
+		</Person>
+		<Person id="p4">
+			<Vorname>Luke</Vorname>
+			<Nachname>Skywalker</Nachname>
+			<Telefon>234-098-231</Telefon>
+		</Person>
+		<Person id="p5">
+			<Nachname>Chewy</Nachname>
+		</Person>
+	</TeilnehmerListe>
+</Termin>

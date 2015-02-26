@@ -1,0 +1,58 @@
+<!DOCTYPE APPOINTMENT SYSTEM "b2_termin.dtd" [
+	<!ENTITY PARTICIPANTS SYSTEM "b3_personen.xml">
+]>
+<APPOINTMENT id="A1" name="appointment_1" creator="Thomas Herzog" movable="true" serialized="false">
+	<STARTDATE>
+		<DATE>
+			<DAY>12</DAY>
+			<MONTH>11</MONTH>
+			<YEAR>2002</YEAR>
+		</DATE>
+		<TIME>
+			<HOUR>13</HOUR>
+			<MINUTE>00</MINUTE>
+		</TIME>
+	</STARTDATE>
+	<ENDDATE>
+		<DATE>
+			<DAY>12</DAY>
+			<MONTH>11</MONTH>
+			<YEAR>2002</YEAR>
+		</DATE>
+		<TIME>
+			<HOUR>13</HOUR>
+			<MINUTE>00</MINUTE>
+		</TIME>
+	</ENDDATE>
+	<DURATION>
+		1.50
+	</DURATION>
+	<APPOINTMENT_DESCRIPTION>
+		<DESCRIPTION_TITLE> 
+			Vorlesung Softwareentwicklung 2
+		</DESCRIPTION_TITLE>
+		<DESCRIPTION>
+			Design Patterns
+		</DESCRIPTION>
+		<APPOINTMENT_TYPE>
+			Lehre
+		</APPOINTMENT_TYPE>
+		<APPOINTMENT_LOCATION>
+			HS 23
+		</APPOINTMENT_LOCATION>
+		<APPOINTMENT_LINK>
+			http://www.google.at
+		</APPOINTMENT_LINK>
+	</APPOINTMENT_DESCRIPTION>
+	<APPOINTMENT_NOTIFICATIONS>
+		<NOTIFICATION type="EMail" period="day">
+				1
+			</NOTIFICATION>
+		<NOTIFICATION type="Beep" period="day">
+				1
+			</NOTIFICATION>
+	</APPOINTMENT_NOTIFICATIONS>
+	<PARTICIPANT_LIST>
+		&PARTICIPANTS;
+	</PARTICIPANT_LIST>
+</APPOINTMENT>
