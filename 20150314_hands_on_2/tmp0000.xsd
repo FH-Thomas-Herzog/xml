@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:t="http://www.fh-hagenberg.at/termin" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.fh-hagenberg.at/termin" elementFormDefault="qualified">
+	<element name="APPOINTMENT">
+		<complexType>
+			<sequence>
+				<element ref="t:APPOINTMENT_INFOS" minOccurs="1" maxOccurs="1"/>
+				<element ref="t:PARTICIPIANT_LIST" minOccurs="1" maxOccurs="1"/>
+			</sequence>
+			<attribute name="creator" type="string" use="required"/>
+			<attribute name="creationDate" type="dateTime" use="required"/>
+			<attribute name="movable" type="boolean" use="optional" fixed="false"/>
+			<attribute name="serialized" type="boolean" use="optional" fixed="false"/>
+			<attribute name="type" type="t:AppointmentType" use="optional" fixed="Lehre"/>
+		</complexType>
+		<!-- Document key constraints -->
+		<key name="participiantKey">
+			<selector xpath=".//t:APPOINTMENT/t:PARTICIPIANT_LIST/t:PARTICIPIANT"/>
+			<field xpath="@id"/>
+		</key>
+		<keyref name="creatorParticipiantId" refer="t:participiantKey">
+			<selector xpath=".//t:APPOINTMENT"/>
+			<field xpath="@creator"/>
+		</keyref>
+	</element>
+	<element name="APPOINTMENT_INFOS">
+		<complexType>
+			<sequence>
+				<element ref="t:NOTIFICATION" minOccurs="3" maxOccurs="3"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="PARTICIPIANT_LIST">
+		<complexType>
+			<sequence>
+				<element ref="t:PARTICIPIANT" minOccurs="1" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="NOTIFICATION" type="string"/>
+	<element name="PARTICIPIANT" type="t:ParticipiantType"/>
+	<!-- Appointment Types enumeration -->
+	<simpleType name="AppointmentType">
+		<restriction base="string">
+			<enumeration value="Lehre"/>
+			<enumeration value="Forschung"/>
+			<enumeration value="Projekte"/>
+			<enumeration value="Privat"/>
+		</restriction>
+	</simpleType>
+	<!-- Inherit appointment type -->
+	<simpleType name="SerializedAppointmentType">
+		<restriction base="string">
+			<enumeration value="Serieninfos"/>
+		</restriction>
+	</simpleType>
+	<!-- Attributes for new enumerations -->
+	<complexType name="SerializedAppointmentTypeAttributed">
+		<attribute name="repeatFrequency" type="t:SerializedAppointmentType"/>
+		<attribute name="repeatDuration" type="t:SerializedAppointmentType"/>
+	</complexType>
+	<!-- United Inherit appointment type -->
+	<simpleType name="UnitedSerializedAppointmentType">
+		<union memberTypes="t:AppointmentType t:SerializedAppointmentType"/>
+	</simpleType>
+	<!-- Participiant Type -->
+	<complexType name="ParticipiantType">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="id" type="string"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+</schema>
