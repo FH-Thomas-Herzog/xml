@@ -1,6 +1,4 @@
-<!DOCTYPE APPOINTMENT SYSTEM "b3_termin.dtd" [
-	<!ENTITY PARTICIPANTS SYSTEM "b3_personen.xml">
-]>
+<!DOCTYPE APPOINTMENT SYSTEM "b2_termin.dtd">
 <APPOINTMENT id="A1" name="appointment_1" creator="P1" movable="true" serialized="false">
 	<STARTDATE>
 		<DATE>

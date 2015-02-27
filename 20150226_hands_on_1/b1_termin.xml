@@ -1,10 +1,9 @@
-<!DOCTYPE APPOINTMENT SYSTEM "b2_termin.dtd">
-<APPOINTMENT id="A1" name="appointment_1" creator="Thomas Herzog" movable="true" serialized="false">
+<APPOINTMENT id="A1" name="appointment_1" creator="P1" movable="true" serialized="false">
 	<STARTDATE>
 		<DATE>
-			<DAY>12</DAY>
-			<MONTH>11</MONTH>
-			<YEAR>2002</YEAR>
+			<DAY>26</DAY>
+			<MONTH>4</MONTH>
+			<YEAR>1999</YEAR>
 		</DATE>
 		<TIME>
 			<HOUR>13</HOUR>
@@ -14,13 +13,13 @@
 	
 	<ENDDATE>
 		<DATE>
-			<DAY>12</DAY>
-			<MONTH>11</MONTH>
-			<YEAR>2002</YEAR>
+			<DAY>26</DAY>
+			<MONTH>4</MONTH>
+			<YEAR>1999</YEAR>
 		</DATE>
 		<TIME>
-			<HOUR>13</HOUR>
-			<MINUTE>00</MINUTE>
+			<HOUR>14</HOUR>
+			<MINUTE>30</MINUTE>
 		</TIME>
 	</ENDDATE>
 	
@@ -56,6 +55,8 @@
 	</APPOINTMENT_NOTIFICATIONS>
 	
 	<PARTICIPANT_LIST>
-			<PARTICIPANT name="Thomas Herzog" email="thomas.herzog@students.fh-hagenberg.at"></PARTICIPANT>
+			<PARTICIPANT id="P1" name="Thomas Herzog" email="thomas.herzog@students.fh-hagenberg.at"></PARTICIPANT>
+			<PARTICIPANT id="P2" name="Thomas Herzog" email="thomas.herzog@students.fh-hagenberg.at"></PARTICIPANT>
+			<PARTICIPANT id="P3" name="Thomas Herzog" email="thomas.herzog@students.fh-hagenberg.at"></PARTICIPANT>
 	</PARTICIPANT_LIST>
 </APPOINTMENT>

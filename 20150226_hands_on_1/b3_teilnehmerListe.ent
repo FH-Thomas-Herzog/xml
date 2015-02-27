@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!ELEMENT PARTICIPANT EMPTY>
 <!ATTLIST PARTICIPANT
+	id ID #REQUIRED  
 	name CDATA #REQUIRED
 	email CDATA #REQUIRED>
