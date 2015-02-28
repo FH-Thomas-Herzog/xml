@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns:t="http://www.fh-hagenberg.at/termin" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.fh-hagenberg.at/termin" elementFormDefault="qualified">
+<include schemaLocation="teilnehmerListe.xsd"></include>
 	<element name="APPOINTMENT" type="t:AppointmentType">
 		<key name="participiantKey">
 			<selector xpath=".//t:PARTICIPIANT_LIST/t:PARTICIPIANT"/>
@@ -43,20 +44,6 @@
 				<attribute name="repeatFrequency" type="t:AppointmentTypeSerializedEnumeration" use="required"/>
 			</extension>
 		</complexContent>
-	</complexType>
-	<!-- Participiant List Type -->
-	<complexType name="ParticipiantListType">
-		<sequence>
-			<element name="PARTICIPIANT" type="t:ParticipiantType" minOccurs="1" maxOccurs="unbounded"/>
-		</sequence>
-	</complexType>
-	<!-- Participiant Type -->
-	<complexType name="ParticipiantType">
-		<simpleContent>
-			<extension base="string">
-				<attribute name="id" type="string" use="required"/>
-			</extension>
-		</simpleContent>
 	</complexType>
 	<!-- ############## Enumerations ##############  -->
 	<!-- Appointment Type Enumerations  -->
