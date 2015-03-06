@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns:t="http://www.fh-hagenberg.at/termin" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.fh-hagenberg.at/termin" elementFormDefault="qualified">
-<include schemaLocation="teilnehmerListe.xsd"></include>
+	<include schemaLocation="teilnehmerListe.xsd"/>
 	<element name="APPOINTMENT" type="t:AppointmentType">
 		<key name="participiantKey">
 			<selector xpath=".//t:PARTICIPIANT_LIST/t:PARTICIPIANT"/>
@@ -16,14 +16,27 @@
 	<complexType name="AppointmentType">
 		<sequence>
 			<element name="APPOINTMENT_INFOS" type="t:AppointmentInfoType" minOccurs="1" maxOccurs="1"/>
-			<element name="PARTICIPIANT_LIST" type="t:ParticipiantListType"/>
+			<element name="PARTICIPIANT_LIST" type="t:ParticipiantListType" minOccurs="1" maxOccurs="1"/>
 		</sequence>
 	</complexType>
 	<!-- Serialized Appointment Type -->
 	<complexType name="AppointmentSerializedType">
-		<sequence>
-			<element name="APPOINTMENT_INFOS_SERIAL" type="t:SerialAppointmentInfoType"/>
-		</sequence>
+		<complexContent>
+			<extension base="t:AppointmentType">
+				<sequence>
+					<element name="APPOINTMENT_INFOS_SERIAL" type="t:AppointmentInfosSerialType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<!-- Appointment Infos Serial Type -->
+	<complexType name="AppointmentInfosSerialType">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="repeatDuration" type="int" use="required"/>
+				<attribute name="repeatFrequency" type="t:AppointmentTypeSerializedEnumeration" use="required"/>
+			</extension>
+		</simpleContent>
 	</complexType>
 	<!-- Appointment Info Type -->
 	<complexType name="AppointmentInfoType">
@@ -35,15 +48,6 @@
 		<attribute name="movable" type="boolean" use="optional" fixed="false"/>
 		<attribute name="serialized" type="boolean" use="optional" fixed="false"/>
 		<attribute name="type" type="t:AppointmentTypeEnumeration" use="optional" default="teaching"/>
-	</complexType>
-	<!-- Serialized Appointment Type -->
-	<complexType name="SerialAppointmentInfoType">
-		<complexContent>
-			<extension base="t:AppointmentType">
-				<attribute name="repeatDuration" type="int" use="required"/>
-				<attribute name="repeatFrequency" type="t:AppointmentTypeSerializedEnumeration" use="required"/>
-			</extension>
-		</complexContent>
 	</complexType>
 	<!-- ############## Enumerations ##############  -->
 	<!-- Appointment Type Enumerations  -->
