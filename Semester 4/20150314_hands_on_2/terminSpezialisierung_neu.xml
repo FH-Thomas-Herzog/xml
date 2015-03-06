@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<APPOINTMENT xsi:type="AppointmentSerializedType"  xmlns="http://www.fh-hagenberg.at/termin" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.fh-hagenberg.at/termin termin_neu.xsd">
+<APPOINTMENT_INFOS creator="conductor" creationDate="2002-05-30T09:00:00">
+	<NOTIFICATION>Hello</NOTIFICATION>
+	<NOTIFICATION>Hello</NOTIFICATION>
+	<NOTIFICATION>Hello</NOTIFICATION>
+</APPOINTMENT_INFOS>
+<PARTICIPIANT_LIST>
+	<PARTICIPIANT id="conductor">Thomas Herzog</PARTICIPIANT>
+</PARTICIPIANT_LIST>
+<APPOINTMENT_INFOS_SERIAL repeatDuration="10" repeatFrequency="daily"/>
+</APPOINTMENT>
+
+

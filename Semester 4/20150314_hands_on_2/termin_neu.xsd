@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:t="http://www.fh-hagenberg.at/termin" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.fh-hagenberg.at/termin" elementFormDefault="qualified">
+	<include schemaLocation="teilnehmerListe.xsd"/>
+	<element name="APPOINTMENT" type="t:AppointmentType">
+		<key name="participiantKey">
+			<selector xpath=".//t:PARTICIPIANT_LIST/t:PARTICIPIANT"/>
+			<field xpath="@id"/>
+		</key>
+		<keyref name="creatorParticipiantId" refer="t:participiantKey">
+			<selector xpath=".//t:APPOINTMENT_INFOS"/>
+			<field xpath="@creator"/>
+		</keyref>
+	</element>
+	<!-- ############## Types ##############  -->
+	<!-- Appointment Type-->
+	<complexType name="AppointmentType">
+		<sequence>
+			<element name="APPOINTMENT_INFOS" type="t:AppointmentInfoType" minOccurs="1" maxOccurs="1"/>
+			<element name="PARTICIPIANT_LIST" type="t:ParticipiantListType" minOccurs="1" maxOccurs="1"/>
+		</sequence>
+	</complexType>
+	<!-- Serialized Appointment Type -->
+	<complexType name="AppointmentSerializedType">
+		<complexContent>
+			<extension base="t:AppointmentType">
+				<sequence>
+					<element name="APPOINTMENT_INFOS_SERIAL" type="t:AppointmentInfosSerialType"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<!-- Appointment Infos Serial Type -->
+	<complexType name="AppointmentInfosSerialType">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="repeatDuration" type="int" use="required"/>
+				<attribute name="repeatFrequency" type="t:AppointmentTypeSerializedEnumeration" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<!-- Appointment Info Type -->
+	<complexType name="AppointmentInfoType">
+		<sequence>
+			<element name="NOTIFICATION" minOccurs="3" maxOccurs="3"/>
+		</sequence>
+		<attribute name="creator" type="string" use="required"/>
+		<attribute name="creationDate" type="dateTime" use="required"/>
+		<attribute name="movable" type="boolean" use="optional" fixed="false"/>
+		<attribute name="serialized" type="boolean" use="optional" fixed="false"/>
+		<attribute name="type" type="t:AppointmentTypeEnumeration" use="optional" default="teaching"/>
+	</complexType>
+	<!-- ############## Enumerations ##############  -->
+	<!-- Appointment Type Enumerations  -->
+	<simpleType name="AppointmentTypeEnumeration">
+		<restriction base="string">
+			<enumeration value="teaching"/>
+			<enumeration value="research"/>
+			<enumeration value="projects"/>
+			<enumeration value="private"/>
+		</restriction>
+	</simpleType>
+	<!-- Serialized Appointment Type Enumerations -->
+	<simpleType name="AppointmentTypeSerializedEnumeration">
+		<restriction base="string">
+			<enumeration value="daily"/>
+			<enumeration value="weekly"/>
+			<enumeration value="monthly"/>
+			<enumeration value="quarterly"/>
+			<enumeration value="yearly"/>
+		</restriction>
+	</simpleType>
+</schema>
