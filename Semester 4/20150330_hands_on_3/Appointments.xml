@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TerminListe>
+	<Termin terminErsteller="1" erstellDatum="1.1.2005" verschiebbar="ja" serienTermin="ja">
+		<Nummer>11</Nummer>
+		<Beginn datum = "1.1.2005" uhrzeit = "12.00"/>
+	</Termin>
+	
+	<Termin terminErsteller="2" erstellDatum="1.1.2006" verschiebbar="ja" serienTermin="nein">
+		<Nummer>22</Nummer>
+		<Beginn datum = "1.1.2006" uhrzeit = "13.00"/>
+		<Ende datum = "1.1.2006" uhrzeit = "14.00"/>
+		<Dauer einheit="Stunden">1</Dauer>
+		<Beschreibung>Kick-Off Meeting</Beschreibung>
+		<Benachrichtigung art="EMail"/>
+	</Termin>
+	
+	<Termin terminErsteller="3" erstellDatum="1.1.2007" verschiebbar="nein" serienTermin="ja">
+		<Nummer>33</Nummer>
+		<Beginn datum = "1.1.2007" uhrzeit = "15.00"/>
+		<Ende datum = "1.1.2007" uhrzeit = "17.00"/>
+		<Dauer einheit="Stunden">2</Dauer>
+		<Beschreibung>Prototyp-Abnahme</Beschreibung>
+		<Benachrichtigung art="Beep"/>
+	</Termin>
+	
+	<Termin terminErsteller="1" erstellDatum="1.1.2004" verschiebbar="nein" serienTermin="nein">
+		<Nummer>44</Nummer>
+		<Beginn datum = "1.1.2004" uhrzeit = "10.00"/>
+		<Beschreibung>Neujahrsfeier</Beschreibung>
+	</Termin>
+</TerminListe>

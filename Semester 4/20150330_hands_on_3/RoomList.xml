@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RaumListe>
+	<Raum id = "HS1">
+		<Belegung terminNr = "11"/>
+		<Belegung terminNr = "22"/>
+		<Details sitzPlätze = "450" facilities = "Beamer"/>
+	</Raum>
+	<Raum id = "HS10">
+		<Belegung terminNr = "33"/>
+		<Belegung terminNr = "44"/>
+		<Details sitzPlätze = "200"/>
+	</Raum>
+	<Raum id = "HS12">
+		<Details sitzPlätze = "50" facilities = "Overhead"/>
+	</Raum>
+</RaumListe>

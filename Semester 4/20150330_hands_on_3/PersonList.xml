@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PersonenListe>
+	<Person id="1" vorname = "Obi-Wan" nachname = "Kenobi">
+		<TerminEintrag terminNr = "11" serienTermin = "ja"/>
+	</Person>
+	
+	<Person id="2" vorname = "Han" nachname = "Solo">
+			<TerminEintrag terminNr = "11" serienTermin = "ja"/>
+			<TerminEintrag terminNr = "22" serienTermin = "nein"/>
+	</Person>
+	
+	<Person id="3" vorname = "R2" nachname = "D2">
+			<TerminEintrag terminNr = "33" serienTermin = "ja"/>
+	</Person>
+	
+	<Person id="4" vorname = "Darth" nachname = "Vader">
+		<TerminEintrag terminNr = "11" serienTermin = "ja"/>
+		<TerminEintrag terminNr = "22" serienTermin = "nein"/>
+		<TerminEintrag terminNr = "33" serienTermin = "ja"/>
+		<TerminEintrag terminNr = "44" serienTermin = "nein"/>
+	</Person>
+	
+</PersonenListe>
