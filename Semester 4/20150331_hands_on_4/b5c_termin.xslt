@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 	<xsl:output method="html" version="5.0" encoding="UTF-8" indent="yes"/>
+	<xsl:include href="b5_formatierung.xslt"/>
 	<!-- Termin Template rendering -->
 	<!-- 1. Level (Parent: root node) -->
 	<!-- 1. Stage Entry point of traverse -->
@@ -20,8 +21,9 @@
 					</thead>
 					<tbody>
 						<tr>
-							<!-- Go to 2. Level -->
-							<xsl:apply-templates select="TerminInfos"/>
+							<!-- Call Beginn and Ende Templates -->
+							<xsl:call-template name="begin_template"/>
+							<xsl:call-template name="end_template"/>
 						</tr>
 					</tbody>
 				</table>
@@ -35,48 +37,40 @@
 				<xsl:value-of select="TerminInfos/@Serientermin"/>
 				<br/>
 				<br/>
-				<xsl:apply-templates select="TeilnehmerListe"/>
+				<table border="1">
+					<tbody>
+						<!-- Iterate over each Person and call corresponding template -->
+						<xsl:for-each select="TeilnehmerListe/Person">
+							<xsl:call-template name="person_template"/>
+						</xsl:for-each>
+					</tbody>
+				</table>
 			</body>
 		</html>
 	</xsl:template>
 	<!-- Beginn Template rendering -->
-	<!-- 3. Level (Parent: Termininfos) -->
-	<xsl:template match="Beginn">
+	<xsl:template name="begin_template">
 		<td>
-			<xsl:value-of select="Datum/@tag"/>-<xsl:value-of select="Datum/@monat"/>-<xsl:value-of select="Datum/@jahr"/> (<xsl:value-of select="Uhrzeit/@stunden"/>:<xsl:value-of select="Uhrzeit/@minuten"/>)
+			<xsl:value-of select="TerminInfos/Beginn/Datum/@tag"/>-<xsl:value-of select="TerminInfos/Beginn/Datum/@monat"/>-<xsl:value-of select="TerminInfos/Beginn/Datum/@jahr"/> (<xsl:value-of select="TerminInfos/Beginn/Uhrzeit/@stunden"/>:<xsl:value-of select="TerminInfos/Beginn/Uhrzeit/@minuten"/>)
 		</td>
 	</xsl:template>
 	<!-- Ende Template rendering -->
-	<!-- 3. Level (Parent: Termininfos) -->
-	<xsl:template match="Ende">
+	<xsl:template name="end_template">
 		<td>
-			<xsl:value-of select="Datum/@tag"/>-<xsl:value-of select="Datum/@monat"/>-<xsl:value-of select="Datum/@jahr"/> (<xsl:value-of select="Uhrzeit/@stunden"/>:<xsl:value-of select="Uhrzeit/@minuten"/>)
+			<xsl:value-of select="TerminInfos/Ende/Datum/@tag"/>-<xsl:value-of select="TerminInfos/Ende/Datum/@monat"/>-<xsl:value-of select="TerminInfos/Ende/Datum/@jahr"/> (<xsl:value-of select="TerminInfos/Ende/Uhrzeit/@stunden"/>:<xsl:value-of select="TerminInfos/Ende/Uhrzeit/@minuten"/>)
 		</td>
 	</xsl:template>
-	<!-- Nothing to do on Dauer -->
-	<!-- 3. Level (Parent: Termininfos) -->
-	<xsl:template match="Dauer"/>
-	<!-- Nothing to do on Beschreibung -->
-	<!-- 3. Level (Parent: TeilnehmerListe) -->
-	<xsl:template match="Beschreibung"/>
-	<!-- Teilnehmerliste Template rendering -->
-	<xsl:template match="TeilnehmerListe">
-		<table border="1">
-			<tbody>
-				<!-- Go to Person node on same level -->
-				<xsl:apply-templates select="Person"/>
-			</tbody>
-		</table>
-	</xsl:template>
 	<!-- Person Template rendering -->
-	<!-- 3. Level (Parent: TeilnehmerListe) -->
-	<xsl:template match="Person">
+	<xsl:template name="person_template">
 		<tr>
 			<td>
-				<xsl:number/>
 			</td>
 			<td>
+				<xsl:number/>
 				<xsl:value-of select="Nachname/text()"/>, <xsl:value-of select="Vorname/text()"/>
+				<xsl:if test="@id = //Termin/TerminInfos/@Terminersteller"> (is creator)</xsl:if>
+				<br/>
+				<xsl:call-template name="delimiter_template"/>
 			</td>
 		</tr>
 	</xsl:template>
